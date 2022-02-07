@@ -1,0 +1,50 @@
+<html>
+    <head>
+    </head>
+    <body>
+{% comment %} <form action="" method="POST">
+    {% csrf_token %}
+    {{ form }} {% endcomment %}
+<input type="number" name="bir" id="ilk">Ilk Rakam</input>
+<br />
+<br />
+<input type="number" name="iki" id="ikinci">Ikinci Rakam</input>
+<br />
+<label for="operations">Operation:</label>
+  <select name="operations" id="operations">
+    <option value="Add" id="add">Add</option>
+    <option value="Sub" id="sub">Sub</option>
+    <option value="Mul" id="mul">Mul</option>
+    <option value="Div" id="div">Div</option>
+  </select>
+  <br><br>
+
+<button type="submit" name="operate" id="optbtn" onclick="islem()">Operate</button>
+<p id="optAnswer">Sonuc: </p>
+{% comment %} </form> {% endcomment %}
+<script>
+function islem(){
+    var operation = document.getElementById('operations');
+    var opt = operations.options[operations.selectedIndex].value;
+    console.log(opt);
+    var first = document.getElementById('ilk').value;
+    var second = document.getElementById('ikinci').value;
+    var result = 0;
+    if(opt == "Add"){
+        result = parseInt(first) + parseInt(second);
+    }
+    else if(opt == "Sub"){
+        result = parseInt(first) - parseInt(second);
+    }
+    else if(opt == "Mul"){
+        result = parseInt(first) * parseInt(second);
+    }
+    else if(opt == "Div"){
+        result = parseInt(first) / parseInt(second);
+    }
+    var ptag = document.getElementById('optAnswer');
+    ptag.innerHTML = result;
+}
+</script>
+</body>
+</html>
